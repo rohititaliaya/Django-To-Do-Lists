@@ -1,0 +1,69 @@
+{% load static %}
+<head>
+	<title>Update Task</title>
+	<style type="text/css">
+		{% include "hmstyle.css" %}
+	</style>
+	  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		{% include "reg.css" %}
+	</style>
+</head>
+<body>
+		<input type="checkbox" id="check">
+<!--nav open-->
+    <header>
+    <label for="check">
+      <i class="fas fa-bars" id="side_bar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>To-Do <span>Lists</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="" class="logout_btn">Logout</a> 
+    </div>
+  </header>
+<!--nav end-->
+<!--sidenav open-->
+ 
+  <div class="sidenav">
+     <a href="#main"><i class="fas fa-tasks" ></i> <span> All Tasks</span></a> 
+     <a href="#"><i class="fas fa-clipboard-check"></i><span> Completed</span></a> 
+     <a href="#"><i class="fas fa-clipboard-list"></i><span> Remaining</span></a> 
+     <a href="#"><i class="far fa-star"></i><span> Importants</span></a> 
+     <a href="#"><i class="fas fa-user-cog"></i><span> Settings</span></a> 
+     <a href="#"><i class="fas fa-question-circle"></i><span> Help</span></a> 
+  </div>
+<!--sidenav end-->
+<div class="content" >
+<div id="main" class="main">
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card px-3">
+                    <div class="card-body">
+						<h1 class="card-title">Todo List</h1>
+						<div class="card-title"><h3><b>Update Task</b></h3></div>
+
+							<div class="add-items d-flex">
+								
+									<form method="POST" action='' class="form-control todo-list-input">
+										{% csrf_token %}
+										{{ form }}
+										<br>
+										<BUTTON type="submit" name="update"  class="add btn btn-primary font-weight-bold todo-list-add-btn">Update</BUTTON>
+	
+									</form> 
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+</body>

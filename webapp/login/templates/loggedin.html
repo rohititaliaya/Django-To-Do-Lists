@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <style type="text/css">{% include "hmstyle.css" %}</style>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+/** {box-sizing: border-box}
+
+ Set height of body and the document to 100% 
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+*/
+/* Style tab links */
+
+</style>
+ 
+</head>
+<body>
+  <input type="checkbox" id="check">
+<!--nav open-->
+  <header class="header2">
+    <label for="check">
+      <i class="fas fa-bars" id="side_bar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>To-Do <span>Lists</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="{% url 'logout'%}" class="logout_btn">Logout</a> 
+    </div>
+  </header>
+<!--nav end-->
+<!--sidenav open-->
+ 
+  <div class="sidenav">
+     <a href=""><i class="fas fa-tasks" ></i> <span>Home</span></a> 
+    <!--  <a href="#"><i class="fas fa-clipboard-check"></i><span> Completed</span></a> 
+     <a href="#"><i class="fas fa-clipboard-list"></i><span> Remaining</span></a> 
+     <a href="#"><i class="far fa-star"></i><span> Importants</span></a>  -->
+     <a href="#"><i class="fas fa-user-cog"></i><span> Settings</span></a> 
+     <a href="#"><i class="fas fa-question-circle"></i><span> Help</span></a> 
+  </div>
+<!--sidenav end-->
+
+  <div class="content" >
+     
+    <div id="main" class="main">
+       {% if messages %}
+        {% for message in messages %}
+          <div class="succes">
+            <strong>  {{ message }}</strong>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          </div>
+        {% endfor %}
+    {% endif %}
+    
+    <div style='background: white; color: black; padding: 10px; border: 5px solid;' >
+      <h1>Add Task</h1>
+      <table>
+        <tr>
+          <td>
+            <form method="Post" action="">
+              <div style="padding: 10px">
+                {% csrf_token %}
+                <b>Task Name :</b>
+                {{ form.title }}  
+               </div>
+          </td>
+          <td>
+               <div>
+                  
+                <hidden style=" visibility: hidden;">
+                <b>Complete:</b>
+                {{form.complete}}
+                </hidden>
+                              
+               </div>  
+
+          </td>
+          <td>
+                <div style="padding:10px">
+                 <BUTTON type="Submit" text="Add" class="add_btn1">Add Task</BUTTON>
+                </div>
+            </form>
+          </td>
+        </tr>
+      </table>
+      
+    
+    </div>
+      <div>
+      </div>
+      <br>  
+<div>
+        <button class="tablink" onclick="openPage('Home', this, '#000f1a')"><i class="fas fa-tasks" ></i> <span> All Tasks</span></button>
+<button class="tablink" onclick="openPage('News', this, '#000f1a')" id="defaultOpen"><i class="fas fa-clipboard-check"></i><span> Completed Tasks</span></button>
+<button class="tablink" onclick="openPage('Contact', this, '#000f1a')"><i class="fas fa-clipboard-list"></i><span> Remaining</span></button>
+<button class="tablink" onclick="openPage('About', this, '#000f1a')"><i class="far fa-star"></i><span> Importants</span></button>
+
+<div id="Home" class="tabcontent">
+  {% for i in A %}
+  <table style="width: 100%">
+            <thead>
+              <tr>
+                  <td style="height: 50px;background: #102f63; text-align: center;color: white;" colspan="4">
+                        {% if i.complete == False %}
+                        <b>{{ i.title }} </b>
+                        {% else %}
+                        <completed><b>{{ i.title }}</b>
+                        </completed>
+                        {% endif %}
+                  </td>
+              </tr>
+             </thead> 
+              <tr style="height: 50px;background:#81b9f0;text-align: center;">    
+                <td style="min-width: 300px">{{ i.created}} </td>
+                <td>
+                        {% if i.complete == False %}
+                        <b class="remain">Remaining Task</b>
+                        {% else %}
+                        <b class="done">Completed !</b>
+                        
+                        {% endif %}
+                </td>
+                 <td style="min-width: 50px">
+                          <a class="add btn btn-primary font-weight-bold todo-list-add-btn" href="{% url 'update_tasks' i.id %}">Update</a>
+                </td>
+                <td style="min-width: 50px">
+                          <a class="add btn btn-danger font-weight-bold todo-list-btn"  href="{% url 'delete' i.id %}" onclick="a()">Remove</a>
+                </td>
+              </tr>
+               
+  </table>
+  
+   {% endfor %}
+</div>
+
+<div id="News" class="tabcontent">
+  {% for i in A %} {% if i.complete == True %}
+  <table style="width: 100%">
+         
+              <tr>
+                  <td style="height: 50px;background: #102f63; text-align: center;color: white;" colspan="4">
+                       
+                        <b>{{ i.title }} </b>
+                  </td>
+              </tr>
+              <tr style="height: 50px;background:#81b9f0;text-align: center;">
+                  <td style="min-width: 300px">{{ i.created}} </td>
+                  <td>
+                        <b class="done">Completed !</b>
+                  </td>
+                <td style="min-width: 50px">
+                          <a class="add btn btn-primary font-weight-bold todo-list-add-btn" href="{% url 'update_tasks' i.id %}">Update</a>
+                </td>
+                <td style="min-width: 50px">
+                          <a class="add btn btn-danger font-weight-bold todo-list-btn"  href="{% url 'delete' i.id %}" onclick="a()">Delete</a>
+                </td>
+                 
+              </tr>
+              
+          </table>
+          {% endif %}
+           {% endfor %}
+</div>
+
+<div id="Contact" class="tabcontent">
+  {% for i in A %} {% if i.complete == False %}
+  <table style="width: 100%">
+         
+              <tr>
+                  <td style="height: 50px;background: #102f63; text-align: center;color: white;" colspan="4">
+                       
+                        <b>{{ i.title }} </b>
+                  </td>
+              </tr>
+              <tr style="height: 50px;background:#81b9f0;text-align: center;">
+                  <td style="min-width: 300px">{{ i.created}} </td>
+                  <td>
+                        <b class="remain">Remaining !!!</b>
+                  </td>
+                <td style="min-width: 50px">
+                          <a class="add btn btn-primary font-weight-bold todo-list-add-btn" href="{% url 'update_tasks' i.id %}">Update</a>
+                </td>
+                <td style="min-width: 50px">
+                          <a class="add btn btn-danger font-weight-bold todo-list-btn"  href="{% url 'delete' i.id %}" onclick="a()">Delete</a>
+                </td>
+                 
+              </tr>
+              
+          </table>
+          {% endif %}
+           {% endfor %}
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Important Task</p>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+      </div> 
+    </div>
+  </div>
+
+
+
+  </div>
+
+</div>
+
+</body>
+</html>

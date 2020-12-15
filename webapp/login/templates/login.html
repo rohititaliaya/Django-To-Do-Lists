@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Registration</title>
+	<style type="text/css">
+		{% include "hmstyle.css" %}
+	</style>
+	  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		{% include "reg.css" %}
+	</style>
+</head>
+<body>
+	<input type="checkbox" id="check">
+<!--nav open-->
+    <header>
+    <label for="check">
+      <i class="fas fa-bars" id="side_bar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>To-Do <span>Lists</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="{% url 'login' %}" class="logout_btn">Login</a> 
+    </div>
+  </header>
+<!--nav end-->
+<!--sidenav open-->
+ 
+  <div class="sidenav">
+    <center>
+     <!--  <img src="" class="port_img">
+      <h4>Rohit</h4> -->
+    
+    </center>
+<!--      <a href="#" onclick="alltasks()"><i class="fas fa-tasks" ></i> <span> All Tasks</span></a> 
+     <a href="#"><i class="fas fa-clipboard-check"></i><span> Completed</span></a> 
+     <a href="#"><i class="fas fa-clipboard-list"></i><span> Remaining</span></a>   -->
+     <a href="{% url 'register' %}"><i class="far fa-user"></i><span> Registraton</span></a> 
+     <a href="{% url 'login' %}"><i class="fas fa-user-cog"></i><span> Login</span></a>
+     <a href="#"><i class="fas fa-question-circle"></i><span> Help</span></a> 
+  </div>
+<!--sidenav end-->
+
+<div class="content" >
+   
+
+	<div class="container">
+	 <div id="content">
+
+    {% if messages %}
+        {% for message in messages %}
+          <div class="danger">
+          	<strong> 	{{ message }}</strong>
+          	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          </div>
+        {% endfor %}
+    {% endif %}
+        
+      </div>
+	<div style="border:2px solid; padding: 20px">
+
+	<h1>Log in</h1>
+	<form action="{% url 'login' %}" method="POST">
+		<div>
+		{% csrf_token %}
+		Username:
+		{{login.Unm}}
+		Password:
+		{{login.pwd}}
+		</div>
+		<button type="Submit" class="registerbtn">Log in</button>
+		<hr>
+		<div class="container signin">
+    		<p>New user? <a href="{% url 'register' %}">Register here</a>.</p>
+		</div>
+	</form>
+
+	</div>
+
+</div>
+</body>
+</html>

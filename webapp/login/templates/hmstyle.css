@@ -1,0 +1,294 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+header{
+	position: fixed;
+	background: #000f1a;
+	padding: 25px;
+	width: 100%;
+	height: 32px;
+
+}
+.header2{
+	position: fixed;
+	background: #000f1a;
+	padding: 10px;
+	width: 100%;
+	height: 32px;
+
+}
+.left_area{
+	color: #fff;
+	margin: 0;
+	margin-top: -30px;
+	padding-left: 50px;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: 900;
+
+
+}
+
+.left_area span{
+	color: #ffd11a;
+}
+
+.add_btn1{
+	padding: 5px;
+	background: white; 
+	text-decoration: none;
+	float: right;
+	border-radius: 2px;
+	font-size: 15px;
+	font-weight: 600;
+	color: black;
+	transition: 0.5s;
+	transition-property: background;
+}
+
+.logout_btn{
+	padding: 5px;
+	background: #003366; 
+	text-decoration: none;
+	float: right;
+	margin-top: -60px;
+	margin-right: 40px;
+	border-radius: 2px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #fff;
+	transition: 0.5s;
+	transition-property: background;
+}
+.logout_btn:hover{
+    background: #3399ff;
+}
+
+.sidenav{
+	background: #000f1a;
+	margin-top: 50px;
+	padding: 0px;
+	padding-top: 30px;
+	position: fixed;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	transition: 0.5s;
+	transition-property: left;
+}
+
+.sidenav a{
+	color: #fff;
+	width: 100%;
+	line-height: 60px;
+	display: block;
+	text-decoration: none;
+	padding-left: 40px;
+	box-sizing: border-box;
+	transition: 0.5s;
+	transition-property: background;
+
+}
+
+.port_img{
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	margin-bottom: 10px;
+}
+
+.sidenav h4{
+	color: #ccc;
+	margin-top: 0;
+	margin-bottom: 20px;
+
+
+}
+
+.sidenav a:hover{
+	background:  #3399ff;
+}
+
+.sidenav i{
+	padding-right: 10px;
+}
+
+label #side_bar_btn{
+	z-index: 1;
+	color: #fff;
+	position: fixed;
+	cursor: pointer;
+	left: 15px;
+
+	font-size: 20px;
+	margin: 5px 0;
+	transition: 0.5s;
+	transition-property: color;
+}
+
+label #side_bar_btn:hover{
+	color: #3399ff;
+}
+
+#check:checked ~ .sidenav{
+	left: -190px;
+}
+
+#check:checked ~ .sidenav a span{
+	display: none;
+}
+
+#check:checked ~ .sidenav a{
+	font-size: 20px;
+	margin-left: 170px;
+	width: 80px;
+}
+
+.content{
+	margin-left: 250px;
+	background: #cce6ff ;
+	background-position: center;
+	background-size: cover;
+	height: 100%;
+	transition: 0.5s;
+
+
+}
+
+#check:checked ~ .content{
+	margin-left: 60px;
+}
+
+#check{
+	display: none;
+}
+
+.main{
+	padding: 100px;
+}
+
+.add_btn{
+	float: right;
+	height: 100px;
+	width:100px;
+	top:80%;
+	right:10%;
+	position:absolute;
+	z-index: 9999;
+	position: fixed;
+	color: #3275a8;
+}
+
+/*Pop up css*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.danger {
+  padding: 20px;
+  background-color: #f5698c;
+  color: white;
+}
+.succes {
+  padding: 20px;
+  background-color: #6897ed;
+  color: white;
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+completed{
+    text-decoration: line-through;
+    text-decoration-color: #3da5f4
+}
+Incompleted{
+    
+    text-decoration-color: #3da5f4
+}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+  border: 5px solid;
+}
+
+#Home {background-color: white;}
+#News {background-color: white;}
+#Contact {background-color: white;}
+#About {background-color: white;}
+
+.remain{
+	color: red;
+}
+.done{
+	color: green;
+}
